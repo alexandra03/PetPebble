@@ -1,7 +1,11 @@
 {
-    "appKeys": {},
+    "appKeys": {
+        "PebbleLatitude": 0,
+        "PebbleLongitude": 0
+    },
     "capabilities": [
-        ""
+        "location",
+        "health"
     ],
     "companyName": "alexandra.sunderland@gmail.com",
     "enableMultiJS": true,
