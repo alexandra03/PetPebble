@@ -1,19 +1,11 @@
 #include <pebble.h>
+#include "pet_pebble_state.h"
 #include "drawing.h"
-
-int is_night() {
-  time_t temp = time(NULL);
-  struct tm *tick_time = localtime(&temp);
-  
-  if (tick_time->tm_hour >= 21 || tick_time->tm_hour < 7) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
 
 // Layer representing the pet pebble
 void draw_pet_pebble(Layer *layer, GContext *ctx) {
+  PetPebbleState pet_state = current_pet_state();
+  
   GPoint BODY_CENTER = GPoint(90, 120);
   int EYES_HEIGHT = 115;
   int EYE_LEFT_CENTER = 80;
@@ -33,7 +25,7 @@ void draw_pet_pebble(Layer *layer, GContext *ctx) {
   graphics_context_set_stroke_width(ctx, 2);
   radius = 2;
   
-  if (is_night() == 1) {
+  if (pet_state == SLEEPING) {
     graphics_draw_line(ctx,
       GPoint(EYE_LEFT_CENTER-5, EYES_HEIGHT),
       GPoint(EYE_LEFT_CENTER+5, EYES_HEIGHT));
@@ -48,7 +40,7 @@ void draw_pet_pebble(Layer *layer, GContext *ctx) {
   }
   
   // Draw the pet pebble mouth
-  if (is_night() == 1) {
+  if (pet_state == SLEEPING) {
     graphics_draw_circle(ctx, 
       GPoint((EYE_LEFT_CENTER+EYE_RIGHT_CENTER)/2, EYES_HEIGHT+13), 5);
     // Draw "Zzzz" to show that the pet pebble is asleep
