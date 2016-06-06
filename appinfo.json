@@ -1,0 +1,25 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "alexandra.sunderland@gmail.com",
+    "enableMultiJS": true,
+    "longName": "Pet Pebble",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "Pet Pebble",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "00f2dbb6-80ed-4e9e-b2d5-0f2a23578ae2",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
