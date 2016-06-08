@@ -1,0 +1,33 @@
+{
+    "author": "alexandra.sunderland@gmail.com",
+    "dependencies": {},
+    "keywords": [],
+    "name": "pet-pebble",
+    "pebble": {
+        "capabilities": [
+            "location",
+            "health"
+        ],
+        "displayName": "Pet Pebble",
+        "enableMultiJS": true,
+        "messageKeys": {
+            "KEY_CONDITIONS": 1,
+            "KEY_TEMPERATURE": 0
+        },
+        "projectType": "native",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "00f2dbb6-80ed-4e9e-b2d5-0f2a23578ae2",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.0"
+}

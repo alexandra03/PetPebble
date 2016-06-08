@@ -64,5 +64,12 @@ void canvas_update_proc(Layer *layer, GContext *ctx) {
   graphics_context_set_fill_color(ctx, GColorDarkGreen);  
   GRect rect_bounds = GRect(0, 120, 180, 180);
   graphics_draw_rect(ctx, rect_bounds);
-  graphics_fill_rect(ctx, rect_bounds, 10, GCornersAll);  
+  graphics_fill_rect(ctx, rect_bounds, 10, GCornersAll);
+  APP_LOG(APP_LOG_LEVEL_INFO, conditions_buffer);
+  
+  Weather weather = current_weather();
+  
+  if (weather == CLOUDY) {
+
+  }
 }

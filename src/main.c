@@ -10,6 +10,9 @@ static TextLayer *s_time_layer;
 static Layer *s_canvas_layer;
 static Layer *pet_pebble_layer;
 
+char temperature_buffer[8];
+char conditions_buffer[32];
+
 // Watchface started: set up graphics
 static void main_window_load(Window *window) {
   //  Get info about the window
@@ -63,11 +66,8 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   layer_mark_dirty(pet_pebble_layer);
 }
 
+// Get weather data, send to C files
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-  // Store incoming information
-  static char temperature_buffer[8];
-  static char conditions_buffer[32];
-  
   // Read tuples for data
   Tuple *temp_tuple = dict_find(iterator, KEY_TEMPERATURE);
   Tuple *conditions_tuple = dict_find(iterator, KEY_CONDITIONS);
@@ -76,7 +76,9 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   if(temp_tuple && conditions_tuple) {
     snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)temp_tuple->value->int32);
     snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", conditions_tuple->value->cstring);
-  }  
+  }
+  
+  layer_mark_dirty(s_canvas_layer);
 }
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {

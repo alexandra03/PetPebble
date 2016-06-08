@@ -14,3 +14,15 @@ PetPebbleState current_pet_state() {
   
   return REST; 
 }
+
+Weather current_weather() {
+  if (strcmp(conditions_buffer, "Clouds") == 0) {
+    return CLOUDY;
+  } else if (strcmp(conditions_buffer, "Misty") == 0) {
+    return MISTY;
+  } else if (strcmp(conditions_buffer, "Sun") == 0) {
+    return SUNNY;
+  } else {
+    return SUNNY;
+  }
+}
